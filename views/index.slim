@@ -1,9 +1,10 @@
-div
-  form action="/new" method="POST"
-    textarea name="text"
+div data-yield="main"
 
-  div data-yield="main"
-  div data-defineview="posts/index"
-    ul id="posts"
-      li data-foreach-post="Post.all"
-        span data-bind="post.text"
+div data-defineview="posts/index"
+  form data-formfor-post="newPost" data-event-submit="createPost"
+    input type="text" data-bind="post.text" autofocus=""
+
+  table id="posts"
+    tr data-foreach-post="posts"
+      td data-bind="post.text"
+      td data-bind="post.updated_at_pretty" data-bind-title="post.updated_at"

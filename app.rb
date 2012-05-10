@@ -24,7 +24,7 @@ class Microtext < Sinatra::Base
     serve '/js',  from: 'static/js'
     serve '/css', from: 'static/css'
 
-    js :app, '/js/app.js', %w(/js/jquery-1.7.2.js /js/batman.jquery.js /js/application.js)
+    js :app, '/js/app.js', %w(/js/jquery-1.7.2.js /js/batman.jquery.js /js/application.js /js/pretty_date.js)
 
     js_compression  :jsmin
     css_compression :sass
@@ -39,8 +39,8 @@ class Microtext < Sinatra::Base
     json Post.all
   end
 
-  post '/posts/new' do
-    json Post.create(text: params[:text])
+  post '/posts' do
+    json Post.create(text: params[:post][:text])
   end
 
   delete '/posts/:id' do
