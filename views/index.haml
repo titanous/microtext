@@ -1,9 +1,0 @@
-%div
-  %form(action='/new' method='POST')
-    %input(type='text' name='text')
-    %input(type='submit')
-
-  %div
-    %ul
-      - @posts.each do |post|
-        %li= post.text
